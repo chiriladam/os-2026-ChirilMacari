@@ -4,7 +4,12 @@ Macari Chiril-Adam, FAF-243
 
 ---
 
-# Lab 1 - The OS as a Resource Manager
+# Lab 1 – The OS as a Resource Manager
+
+## Purpose of the work
+
+The purpose of this lab is to see the operating system at work as a resource manager. By running commands in a Linux terminal, I looked at how the OS manages the four core resources (files, processes, memory and devices) and wrote down what I observed.
+
 
 ## Setup
 
@@ -18,9 +23,10 @@ WSL 2 still runs a real Linux kernel, just inside a small virtual machine made b
 
 ---
 
-## Part 1 - Files and directories
+## Part 1. Files and directories
 
-![Part 1](screenshots/01-files.png)
+![Figure 1.1.1 – Creating, copying and renaming files, chmod, and the directories under /](screenshots/01-files.png)
+
 
 **1. Who owns the files you just created, and which group?**
 
@@ -53,9 +59,10 @@ Both files have 24 bytes ("hello operating systems" + the newline). `mv` didn't 
 
 ---
 
-## Part 2 - Processes
+## Part 2. Processes
 
-![Part 2](screenshots/02-processes.png)
+![Figure 1.2.1 – PID 1, the number of processes, and a background sleep with its /proc status](screenshots/02-processes.png)
+
 
 **1. What is the PID of process number 1, and what is it?**
 
@@ -84,9 +91,10 @@ Threads: 1
 
 ---
 
-## Part 3 - Memory
+## Part 3. Memory
 
-![Part 3](screenshots/03-memory.png)
+![Figure 1.3.1 – free -h, /proc/meminfo, swap and the VmRSS of sleep](screenshots/03-memory.png)
+
 
 **1. How much total RAM does the VM have, and how much is free?**
 
@@ -107,9 +115,10 @@ Swap is space on the disk that the OS uses as extra memory. When RAM is full, th
 
 ---
 
-## Part 4 - Devices and storage
+## Part 4. Devices and storage
 
-![Part 4](screenshots/04-devices.png)
+![Figure 1.4.1 – df -h, lsblk, the root file system and /dev](screenshots/04-devices.png)
+
 
 **1. Which device is your root filesystem "/" mounted on?**
 
@@ -138,3 +147,6 @@ My Windows C: drive shows up in Linux as a normal folder, `/mnt/c`, even though 
 ## Conclusion (Lab 1)
 
 The OS manages four resources: files (I saw them with `ls -l` and changed permissions with `chmod`), processes (`ps aux` to list them and `kill` to stop them) and memory (`free -h` and `/proc/<pid>/status`). It also manages devices and storage, which I saw with `lsblk` and `df -h`. In all four cases the OS is between my programs and the hardware, it decides who can use what, and it shows everything as files.
+
+---
+---

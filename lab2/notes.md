@@ -4,7 +4,12 @@ Macari Chiril-Adam, FAF-243
 
 ---
 
-# Lab 2 - Meet the OS You Will Build (xv6)
+# Lab 2 – Meet the OS You Will Build (xv6)
+
+## Purpose of the work
+
+The purpose of this lab is to build xv6, a small teaching operating system, from its source code, boot it in the QEMU emulator and use it as a small Unix. I also read the code of a user program and the kernel code that answers its system calls, and wrote my first xv6 program, sleep, which makes a system call into the kernel I compiled myself.
+
 
 ## Setup
 
@@ -15,7 +20,7 @@ I used the same Ubuntu in WSL 2 as in Lab 1. My Ubuntu version is pretty new, so
 
 ---
 
-## Part 1 - Build it and boot it
+## Part 1. Build it and boot it
 
 `make qemu` compiled the kernel and the user programs with the RISC-V compiler (`riscv64-linux-gnu-gcc`), made the file system image `fs.img` and started QEMU:
 
@@ -30,12 +35,20 @@ $
 
 "hart" means a CPU core in RISC-V. QEMU runs 3 cores (`-smp 3`). Core 0 sets up the kernel while cores 1 and 2 wait, and then they print `hart N starting` and start working too. After that the kernel starts `init` (the first process, like systemd in Lab 1) and `init` starts the shell `sh`.
 
+![Figure 2.1.1 – xv6 booting in QEMU](screenshots/05a-xv6-boot.png)
+
 ---
 
-## Part 2 - Use xv6 as the Unix it is
+## Part 2. Use xv6 as the Unix it is
 
-![xv6 boot and ls](screenshots/05-xv6-boot-ls.png)
-![xv6 commands](screenshots/06-xv6-commands.png)
+![Figure 2.2.1 – ls inside xv6](screenshots/05b-xv6-ls.png)
+
+![Figure 2.2.2 – echo hello xv6](screenshots/06a-echo.png)
+
+![Figure 2.2.3 – The pipe ls | grep c](screenshots/06b-ls-grep.png)
+
+![Figure 2.2.4 – wc README](screenshots/06c-wc.png)
+
 
 ```
 $ echo hello xv6
@@ -72,9 +85,10 @@ It works the same way at the base (a prompt, running programs with arguments, pi
 
 ---
 
-## Part 3 - Read the source
+## Part 3. Read the source
 
-![Source reading](screenshots/07-source.png)
+![Figure 2.3.1 – System calls in user/cat.c, sys_read and sys_write, and pause](screenshots/07-source.png)
+
 
 ```
 --- system calls in cat.c ---
@@ -113,9 +127,10 @@ The code in `kernel/` is the operating system itself, it runs in privileged (sup
 
 ---
 
-## Part 4 - My first xv6 program: sleep
+## Part 4. My first xv6 program: sleep
 
-![sleep.c and Makefile](screenshots/08-sleep-code.png)
+![Figure 2.4.1 – user/sleep.c and the _sleep line in the Makefile](screenshots/08-sleep-code.png)
+
 
 `user/sleep.c`:
 ```c
@@ -140,7 +155,8 @@ In the `Makefile` I added `$U/_sleep\` to `UPROGS`, right after `$U/_echo\` (lin
 
 Testing it in xv6:
 
-![sleep test](screenshots/09-sleep-test.png)
+![Figure 2.4.2 – Testing sleep inside xv6](screenshots/09-sleep-test.png)
+
 
 ```
 $ sleep 10

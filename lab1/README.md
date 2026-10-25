@@ -1,5 +1,5 @@
 # Lab 1 – The OS as a Resource Manager
 
-- `report.md` – observations and answers, with the screenshots in `screenshots/`.
-- The Word version of the report covers Labs 1 and 2 together:
-  [`../lab2/Lab12_OS_Macari_Chiril.docx`](../lab2/Lab12_OS_Macari_Chiril.docx)
+- `report.md` – the observations and answers, with the screenshots in `screenshots/`.
+- The Word report covers Labs 1 and 2 together (one section per lab):
+  [`../lab2/Lab1-2_ChirilMacari_FAF-243.docx`](../lab2/Lab1-2_ChirilMacari_FAF-243.docx)
