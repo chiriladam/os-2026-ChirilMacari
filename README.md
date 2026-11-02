@@ -13,6 +13,9 @@ Chiril-Adam Macari, FAF-243
 | [6](lab6/) | Inside the xv6 File System | [Lab5-6_ChirilMacari_FAF-243.docx](lab6/Lab5-6_ChirilMacari_FAF-243.docx) (Lab 6 section) | [mystat.c](lab6/mystat.c), [find.c](lab6/find.c), [Makefile](lab6/Makefile) |
 | [7](lab7/) | Three Small Programs: Processes, Redirection, a Pipe (Linux) | [Lab7-8_ChirilMacari_FAF-243.docx](lab8/Lab7-8_ChirilMacari_FAF-243.docx) (Lab 7 section) | [run.c](lab7/run.c), [zombie.c](lab7/zombie.c), [redirect.c](lab7/redirect.c), [pipeline.c](lab7/pipeline.c), [pipeline3.c](lab7/pipeline3.c) |
 | [8](lab8/) | The Same Calls, Inside Your Own OS (xv6) | [Lab7-8_ChirilMacari_FAF-243.docx](lab8/Lab7-8_ChirilMacari_FAF-243.docx) (Lab 8 section) | [run.c](lab8/run.c), [pingpong.c](lab8/pingpong.c), [primes.c](lab8/primes.c), [Makefile](lab8/Makefile) |
+| [9](lab9/) | Watching System Calls with strace (Linux) | [Lab9_ChirilMacari_FAF-243.docx](lab9/Lab9_ChirilMacari_FAF-243.docx), [lab9/report.md](lab9/report.md) | [syscalls.c](lab9/syscalls.c) |
+| [10](lab10/) | Add Your Own System Call: trace (xv6) | [Lab10_ChirilMacari_FAF-243.docx](lab10/Lab10_ChirilMacari_FAF-243.docx), [lab10/report.md](lab10/report.md), [notes.txt](lab10/notes.txt) | full modified tree [xv6-riscv/](lab10/xv6-riscv/) ([trace.c](lab10/xv6-riscv/user/trace.c), [syscall.c](lab10/xv6-riscv/kernel/syscall.c), [sysproc.c](lab10/xv6-riscv/kernel/sysproc.c)) |
 
 Labs 1–2, 5–6 and 7–8 each have one combined Word report with a separate section for every lab.
 The xv6 programs build on xv6-riscv revision `06aad25` (`make qemu`); `sleep.c` uses `pause()`.
+Lab 10 contains the whole modified xv6 tree (all programs from labs 2–10 plus the new `trace` system call, number 23).
