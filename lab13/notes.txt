@@ -1,0 +1,39 @@
+Lab 13 - notes.txt (Chiril-Adam Macari, FAF-243)
+
+1. Without the lock, why do the letters mix? (How many system calls does one line cost?)
+   Because one line is not printed at once. mix writes one letter per write(),
+   so one line costs 31 system calls (30 letters and the \n). make qemu starts
+   xv6 with 3 CPUs (-smp 3), so the parent and the child really run at the same
+   time, and between any two write() calls of one process the other process can
+   do its own write(). The console only sees a stream of single letters from
+   two processes, so they come out mixed, and the lines even have different
+   lengths. Every run is mixed differently, because it depends on the timing.
+
+2. With the lock every line is whole. Which two lines of mix.c make one line a critical section?
+   if (uselock) sem_down(3); before the inner for loop, and if (uselock)
+   sem_up(3); after it. Semaphore 3 starts at 1 (sem_init(3, 1)), so it is a
+   lock: the process that gets past sem_down(3) writes its 31 letters, and the
+   other one sleeps in sem_down(3) until sem_up(3). That is why every line is
+   whole.
+
+3. In sem_down the test is "while (s->value == 0)", not "if". Why can a process wake up and still find 0?
+   Because sem_up adds only 1 but wakeup(s) wakes up every process that sleeps
+   on s (in kernel/proc.c wakeup goes through the whole process table and makes
+   every process with p->chan == chan runnable). Only the first one that gets
+   s->lock takes the unit; the others get the lock after it and find value 0
+   again, so they must go back to sleep. Also, a process that was not sleeping
+   at all can call sem_down between the sem_up and the moment the woken process
+   takes the lock, and take the unit first. With if, the woken process would do
+   s->value-- on 0 and the value would become -1, so two processes would be
+   inside a lock that allows one.
+
+4. sem_down calls release(&s->lock) BEFORE sleep(). What would go wrong if it slept holding the spinlock?
+   The process that has to wake it up could never do it: sem_up starts with
+   acquire(&s->lock), and a spinlock does not sleep, it spins in a loop until
+   the lock is free. The lock would be held by the sleeping process, so sem_up
+   would spin forever on its CPU (with interrupts off) and never reach
+   s->value++ and wakeup(s), and the sleeper would never wake up: a deadlock,
+   with a CPU burning in a loop. In this xv6 it does not even get that far:
+   sched() in kernel/proc.c (line 488) checks if (mycpu()->noff != 1)
+   panic("sched locks");, so a process that tries to sleep while holding any
+   spinlock other than its own p->lock makes the kernel panic.
