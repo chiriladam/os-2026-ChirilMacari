@@ -18,8 +18,12 @@ Chiril-Adam Macari, FAF-243
 | [11](lab11/) | The Race and the Semaphore (Linux) | [Lab11_ChirilMacari_FAF-243.docx](lab11/Lab11_ChirilMacari_FAF-243.docx), [lab11/report.md](lab11/report.md) | [race.c](lab11/race.c), [mutex.c](lab11/mutex.c), [sem.c](lab11/sem.c), [order.c](lab11/order.c), [parking.c](lab11/parking.c), [atomic.c](lab11/atomic.c) (optional) |
 | [12](lab12/) | Producer, Consumer and the Other Tools (Linux) | [Lab12_ChirilMacari_FAF-243.docx](lab12/Lab12_ChirilMacari_FAF-243.docx), [lab12/report.md](lab12/report.md) | [prodcons.c](lab12/prodcons.c), [condvar.c](lab12/condvar.c), [readers.c](lab12/readers.c), [deadlock.c](lab12/deadlock.c) (fixed) |
 | [13](lab13/) | Semaphores in Your Own Kernel (xv6) | [Lab13_ChirilMacari_FAF-243.docx](lab13/Lab13_ChirilMacari_FAF-243.docx), [lab13/report.md](lab13/report.md), [notes.txt](lab13/notes.txt) | full modified tree [xv6-riscv/](lab13/xv6-riscv/) ([sem.c](lab13/xv6-riscv/kernel/sem.c), [syscall.c](lab13/xv6-riscv/kernel/syscall.c), [semtest.c](lab13/xv6-riscv/user/semtest.c), [mix.c](lab13/xv6-riscv/user/mix.c)) |
+| [17](lab17/) | Threads Share Memory, and Race (Linux) | [Lab17_ChirilMacari_FAF-243.docx](lab17/Lab17_ChirilMacari_FAF-243.docx), [lab17/report.md](lab17/report.md) | [fire.c](lab17/fire.c), [fire4.c](lab17/fire4.c) (Part 2, four threads) |
+| [18](lab18/) | Build a User-Level Thread Switch (xv6) | [Lab18_ChirilMacari_FAF-243.docx](lab18/Lab18_ChirilMacari_FAF-243.docx), [lab18/report.md](lab18/report.md), [notes.txt](lab18/notes.txt) | full modified tree [xv6-riscv/](lab18/xv6-riscv/) ([uthread.c](lab18/xv6-riscv/user/uthread.c), [uthread_switch.S](lab18/xv6-riscv/user/uthread_switch.S), [Makefile](lab18/xv6-riscv/Makefile)) |
 
 Labs 1–2, 5–6 and 7–8 each have one combined Word report with a separate section for every lab.
 The xv6 programs build on xv6-riscv revision `06aad25` (`make qemu`); `sleep.c` uses `pause()`.
 Lab 10 contains the whole modified xv6 tree (all programs from labs 2–10 plus the new `trace` system call, number 23).
 Lab 13 contains the whole modified xv6 tree again (Lab 10 plus the kernel semaphores `sem_init`, `sem_down`, `sem_up`, numbers 24–26).
+Labs 14–16 were not given by the teacher, so the numbering jumps from 13 to 17.
+Lab 18 contains the whole modified xv6 tree again (Lab 13 plus the user-level thread library `uthread` with `thread_switch`, no kernel changes).
